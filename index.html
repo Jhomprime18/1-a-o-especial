@@ -23,7 +23,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita que rebote la página completa hacia los lados */
             min-height: 100vh;
         }
 
@@ -36,7 +36,7 @@
 
         .container {
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px 15px;
             max-width: 1000px;
             z-index: 2;
             width: 100%;
@@ -48,7 +48,9 @@
             font-size: 5rem;
             color: #fff;
             text-shadow: 0 0 10px #fff, 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            word-wrap: break-word; /* Permite que el título baje de renglón limpiamente en celular */
             animation: pulseNeon 2.5s ease-in-out infinite;
         }
 
@@ -63,6 +65,7 @@
             text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
             margin-bottom: 30px;
             font-weight: 600;
+            line-height: 1.4;
         }
 
         /* CONTADOR ESTILO NEÓN */
@@ -75,6 +78,8 @@
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(188, 19, 254, 0.15), inset 0 0 15px rgba(188, 19, 254, 0.1);
             margin-bottom: 40px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .countdown-title {
@@ -88,20 +93,24 @@
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap; /* Evita que el contador rompa los bordes en pantallas chicas */
         }
 
         .time-box {
             background: rgba(0, 0, 0, 0.7);
             padding: 15px;
             border-radius: 12px;
-            min-width: 80px;
+            min-width: 75px;
+            flex: 1;
+            max-width: 110px;
             border: 1px solid rgba(0, 243, 255, 0.3);
             box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+            box-sizing: border-box;
         }
 
         .time-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #fff;
             text-shadow: 0 0 8px var(--neon-cyan);
@@ -109,7 +118,7 @@
         }
 
         .time-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #aaa;
             text-transform: uppercase;
         }
@@ -128,6 +137,8 @@
             text-shadow: 0 0 5px #fff;
             margin-bottom: 40px;
             transition: 0.3s;
+            max-width: 100%;
+            white-space: normal; /* Si el texto es largo en pantallas chicas, se ajusta bien */
         }
 
         #music-btn:hover {
@@ -138,9 +149,9 @@
 
         /* CONTENEDOR DE FOTOS */
         .heart-grid-container {
-            margin: 50px auto;
+            margin: 40px auto;
             max-width: 750px;
-            padding: 10px;
+            padding: 0;
             width: 100%;
             box-sizing: border-box;
         }
@@ -149,19 +160,20 @@
             font-size: 1.8rem;
             color: #fff;
             text-shadow: 0 0 10px var(--neon-purple);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.3;
         }
 
-        /* Contenedor wrapper para permitir scroll si el teléfono es muy pequeño */
+        /* CONTENEDOR NUEVO PARA EL SCROLL LATERAL EN EL CORAZÓN */
         .heart-grid-wrapper {
             width: 100%;
-            overflow-x: auto;
-            padding: 15px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--neon-purple) transparent;
+            overflow-x: auto; /* Permite deslizar hacia la derecha con el dedo */
+            padding: 15px 5px;
+            box-sizing: border-box;
+            -webkit-overflow-scrolling: touch; /* Scroll fluido en dispositivos móviles */
         }
 
         .heart-grid {
@@ -170,7 +182,7 @@
             grid-template-rows: repeat(6, 1fr);
             gap: 10px;
             aspect-ratio: 1.15;
-            min-width: 650px; /* Asegura que la forma de corazón no se colapse en pantallas pequeñas */
+            min-width: 700px; /* Evita que el corazón se deforme y fuerza el desplazamiento horizontal */
         }
 
         /* CELDAS DE FOTOS */
@@ -226,10 +238,10 @@
         }
 
         /* ==========================================
-           CRONOLOGÍA (TIMELINE) NEÓN MODERNO
+           CRONOLOGÍA (TIMELINE)
            ========================================== */
         .timeline-section {
-            margin: 60px auto 30px auto;
+            margin: 50px auto 30px auto;
             max-width: 850px;
             position: relative;
             padding: 10px;
@@ -263,13 +275,13 @@
 
         .timeline-item:nth-child(odd) {
             left: 0;
-            padding-right: 40px;
+            padding-right: 30px;
             text-align: right;
         }
 
         .timeline-item:nth-child(even) {
             left: 50%;
-            padding-left: 40px;
+            padding-left: 30px;
             text-align: left;
         }
 
@@ -291,7 +303,6 @@
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
         }
 
-        /* Foto Completa y Grande */
         .timeline-img {
             width: 100%;
             max-height: 400px;
@@ -350,12 +361,13 @@
         .interactive-section {
             margin: 40px 0 30px 0;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .btn-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
             margin-top: 20px;
         }
 
@@ -363,11 +375,11 @@
             background: rgba(20, 5, 35, 0.6);
             border: 1px solid var(--glass-border);
             color: #fff;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 15px 10px;
+            border-radius: 12px;
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -379,7 +391,7 @@
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
         }
 
-        /* VENTANA MODAL NEÓN */
+        /* VENTANA MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -389,15 +401,17 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(7px);
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         .modal-content {
             background: #0d021a;
             border: 2px solid var(--neon-cyan);
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
+            max-width: 450px;
+            width: 100%;
             text-align: center;
             box-shadow: 0 0 25px var(--neon-cyan);
             position: relative;
@@ -437,7 +451,6 @@
             visibility: hidden;
         }
 
-        /* CONFIGURACIÓN ANIMACIÓN PARTÍCULAS */
         .heart-particle {
             position: absolute;
             pointer-events: none;
@@ -454,7 +467,7 @@
             100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
         }
 
-        /* RESPONSIVE */
+        /* REGLAS RESPONSIVAS AJUSTADAS */
         @media (max-width: 768px) {
             .timeline::before { left: 20px; }
             .timeline-item { width: 100%; padding-left: 45px !important; padding-right: 0 !important; text-align: left !important; }
@@ -463,21 +476,20 @@
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.8rem; }
+            h1 { font-size: 2.5rem; } /* Reduce dinámicamente el tamaño del título en móviles */
             .subtitle { font-size: 1.1rem; }
-            .heart-center-card h3 { font-size: 1.3rem; }
-            .heart-center-card p { font-size: 0.8rem; line-height: 1.3; padding: 5px; }
-            .time-number { font-size: 1.8rem; }
-            .time-box { min-width: 60px; padding: 10px; }
-            .timeline-img { max-height: 250px; }
-            #music-btn { padding: 14px 25px; font-size: 1rem; width: 100%; }
+            .time-number { font-size: 1.6rem; }
+            .time-box { padding: 10px 5px; min-width: 65px; }
+            #music-btn { padding: 15px 20px; font-size: 1rem; width: 100%; }
             .interactive-title { font-size: 1.3rem; }
+            .heart-center-card h3 { font-size: 1.4rem; }
+            .heart-center-card p { font-size: 0.8rem; line-height: 1.3; }
+            .timeline-img { max-height: 250px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Capa del fondo de partículas infinitas -->
     <div id="particles"></div>
 
     <audio id="love-song" loop>
@@ -500,14 +512,11 @@
         
         <button id="music-btn" onclick="playMusic()">⚡ Te dedico esta canción bebé hermosa</button>
 
-        <!-- SECCIÓN DEL CORAZÓN DE FOTOS -->
         <div class="heart-grid-container">
             <div class="interactive-title">Mis fotos favoritas de ti 🔮 ✨</div>
             
-            <!-- Wrapper agregado para optimizar el scroll horizontal en móviles -->
             <div class="heart-grid-wrapper">
                 <div class="heart-grid">
-                    <!-- Fila 1 -->
                     <div class="empty-cell"></div>
                     <img class="heart-photo" src="IMG-20250720-WA0017.jpg" alt="Foto 1">
                     <img class="heart-photo" src="image_8a251e.jpg" alt="Foto 2">
@@ -516,7 +525,6 @@
                     <img class="heart-photo" src="IMG-20260108-WA0038.jpg" alt="Foto 4">
                     <div class="empty-cell"></div>
 
-                    <!-- Fila 2 -->
                     <img class="heart-photo" src="IMG-20260529-WA0038.jpg" alt="Foto 5">
                     <img class="heart-photo" src="image_8a28bd.jpg" alt="Foto 6">
                     
@@ -528,13 +536,11 @@
                     <img class="heart-photo" src="image_8a28fa.jpg" alt="Foto 7">
                     <img class="heart-photo" src="IMG-20250608-WA0003.jpg" alt="Foto 8">
 
-                    <!-- Fila 3 -->
                     <img class="heart-photo" src="IMG-20250602-WA0073.jpg" alt="Foto 9">
                     <img class="heart-photo" src="image_8a291a.jpg" alt="Foto 10">
                     <img class="heart-photo" src="image_8a293b.jpg" alt="Foto 11">
                     <img class="heart-photo" src="IMG-20250606-WA0017.jpg" alt="Foto 12">
 
-                    <!-- Fila 4 -->
                     <div class="empty-cell"></div>
                     <img class="heart-photo" src="IMG-20251214-WA0059.jpg" alt="Foto 13">
                     <img class="heart-photo" src="image_8a2c00.jpg" alt="Foto 14">
@@ -543,7 +549,6 @@
                     <img class="heart-photo" src="IMG-20260517-WA0010.jpg" alt="Foto 17">
                     <div class="empty-cell"></div>
 
-                    <!-- Fila 5 -->
                     <div class="empty-cell"></div>
                     <div class="empty-cell"></div>
                     <img class="heart-photo" src="IMG-20260523-WA0035.jpg" alt="Foto 18">
@@ -552,7 +557,6 @@
                     <div class="empty-cell"></div>
                     <div class="empty-cell"></div>
 
-                    <!-- Fila 6 -->
                     <div class="empty-cell"></div>
                     <div class="empty-cell"></div>
                     <div class="empty-cell"></div>
@@ -564,14 +568,9 @@
             </div>
         </div>
 
-        <!-- ==========================================
-            SECCIÓN CRONOLOGÍA
-            ========================================== -->
         <div class="timeline-section">
             <div class="interactive-title">Nuestra Historia 📖 ⚡</div>
             <ul class="timeline">
-                
-                <!-- Hito 1 -->
                 <li class="timeline-item">
                     <div class="timeline-icon"></div>
                     <div class="timeline-content">
@@ -582,7 +581,6 @@
                     </div>
                 </li>
 
-                <!-- Hito 2 -->
                 <li class="timeline-item">
                     <div class="timeline-icon"></div>
                     <div class="timeline-content">
@@ -593,7 +591,6 @@
                     </div>
                 </li>
 
-                <!-- Hito 3 -->
                 <li class="timeline-item">
                     <div class="timeline-icon"></div>
                     <div class="timeline-content">
@@ -604,7 +601,6 @@
                     </div>
                 </li>
 
-                <!-- Hito 4 -->
                 <li class="timeline-item">
                     <div class="timeline-icon"></div>
                     <div class="timeline-content">
@@ -614,19 +610,17 @@
                         <p>Nuestro primer mesaniversario se ve lejano en comparación al primer año que tenemos juntos, pero fue la primera vez que te di cariño y una carta. Cada mes que pasaba fui mejorando en cuanto a regalos, detalles y más importante en actitud. ¡Y seguiré haciéndolo porque te amo!</p>
                     </div>
                 </li>
-
             </ul>
         </div>
 
-        <!-- SECCIÓN DE BOTONES DE ÁNIMO -->
         <div class="interactive-section">
-            <div class="interactive-title">Te hice estos botones con mensajes dentro segun como te siemtas puedes verlos siempre que quieras o cuando te sientas estresada o mal :3:</div>
+            <div class="interactive-title">Te hice estos botones con mensajes dentro según como te sientas puedes verlos siempre que quieras o cuando te sientas estresada o mal :3:</div>
             <div class="btn-grid">
                 <button class="mood-btn" onclick="openModal('extraño')">Te extraño mucho 🥺</button>
                 <button class="mood-btn" onclick="openModal('triste')">Tuve un mal día 😞</button>
                 <button class="mood-btn" onclick="openModal('feliz')">¡Estoy feliz! 🥰</button>
                 <button class="mood-btn" onclick="openModal('futuro')">Nuestro futuro 🔮</button>
-                <button class="mood-btn" onclick="openModal('mensajeNuevo')">Un mensajito extra 💖</button>
+                <button class="mood-btn" onclick="openModal('estresada')">Estoy Estresada 🫩</button>
             </div>
         </div>
     </div>
@@ -674,7 +668,7 @@
             triste: "Lamento mucho si las cosas no salieron bien hoy. Respira profundo, mi amor. Eres una mujer increíblemente fuerte y capaz. No dejes que un mal día opaque lo maravillosa que eres. Yo siempre voy a estar aquí para escucharte y apoyarte en todo. Te amo. 😞⚡",
             feliz: "¡Verte feliz es lo que más me llena el alma! Tu sonrisa y tu alegría se transmiten incluso a través de la pantalla. Gracias por contagiarme tu hermosa energía. 🥰✨",
             futuro: "Hoy cumplimos un año, pero esto es solo el inicio. Me emociona muchísimo pensar en todo lo que nos espera: los viajes, los abrazos que no tendrán fin y cada meta que cumpliremos juntos. Gracias por elegirme para construir este futuro a tu lado. 🔮💜",
-            mensajeNuevo: "Nunca olvides que eres mi prioridad absoluta y que cada pequeño detalle que hago es para recordarte lo mucho que vales. Gracias por regalarme los mejores 365 días de mi vida. ¡Eres mi todo, hoy y siempre! 💖✨"
+            estresada: "Ay mi niña lamento que estes estresada recuerda que eres una superchica se que puedes con todo pero tomatelo con calma respira ondo e intenta descansar cuando puedas. cuando te sientas mejor habla con tu niño y cuentale todo recuerda que estoy para ti✨"
         };
 
         function openModal(type) {
@@ -686,7 +680,7 @@
             document.getElementById('loveModal').style.display = 'none';
         }
 
-        // NUEVO GENERADOR ENRIQUECIDO DE PARTÍCULAS (Estrellas, Corazones, Constelaciones que suben)
+        // NUEVO GENERADOR ENRIQUECIDO DE PARTÍCULAS
         function createHeart() {
             const container = document.getElementById('particles');
             const symbols = ['⭐', '✨', '💜', '🔮', '⚡', '🌌', '💖', '💞', '🌙', '💘'];
@@ -694,11 +688,13 @@
             particle.classList.add('heart-particle');
             
             particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            
             particle.style.left = Math.random() * 100 + 'vw';
             particle.style.top = '100vh';
             
             const size = (Math.random() * 22 + 12);
             particle.style.fontSize = size + 'px';
+            
             particle.style.animationDuration = (Math.random() * 4 + 3) + 's';
             
             if(Math.random() > 0.5) {
