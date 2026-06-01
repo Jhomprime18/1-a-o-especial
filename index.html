@@ -39,6 +39,8 @@
             padding: 40px 20px;
             max-width: 1000px;
             z-index: 2;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -139,6 +141,8 @@
             margin: 50px auto;
             max-width: 750px;
             padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .interactive-title {
@@ -151,12 +155,22 @@
             letter-spacing: 1px;
         }
 
+        /* Contenedor wrapper para permitir scroll si el teléfono es muy pequeño */
+        .heart-grid-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding: 15px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-purple) transparent;
+        }
+
         .heart-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             grid-template-rows: repeat(6, 1fr);
             gap: 10px;
             aspect-ratio: 1.15;
+            min-width: 650px; /* Asegura que la forma de corazón no se colapse en pantallas pequeñas */
         }
 
         /* CELDAS DE FOTOS */
@@ -219,6 +233,8 @@
             max-width: 850px;
             position: relative;
             padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .timeline {
@@ -333,6 +349,7 @@
         /* SECCIÓN DE BOTONES DE ÁNIMO */
         .interactive-section {
             margin: 40px 0 30px 0;
+            width: 100%;
         }
 
         .btn-grid {
@@ -446,13 +463,15 @@
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 3.2rem; }
-            .heart-center-card h3 { font-size: 1.4rem; }
-            .heart-center-card p { font-size: 0.75rem; line-height: 1.2; }
+            h1 { font-size: 2.8rem; }
+            .subtitle { font-size: 1.1rem; }
+            .heart-center-card h3 { font-size: 1.3rem; }
+            .heart-center-card p { font-size: 0.8rem; line-height: 1.3; padding: 5px; }
             .time-number { font-size: 1.8rem; }
             .time-box { min-width: 60px; padding: 10px; }
-            .heart-grid { gap: 4px; }
             .timeline-img { max-height: 250px; }
+            #music-btn { padding: 14px 25px; font-size: 1rem; width: 100%; }
+            .interactive-title { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -485,60 +504,63 @@
         <div class="heart-grid-container">
             <div class="interactive-title">Mis fotos favoritas de ti 🔮 ✨</div>
             
-            <div class="heart-grid">
-                <!-- Fila 1 -->
-                <div class="empty-cell"></div>
-                <img class="heart-photo" src="IMG-20250720-WA0017.jpg" alt="Foto 1">
-                <img class="heart-photo" src="image_8a251e.jpg" alt="Foto 2">
-                <div class="empty-cell"></div>
-                <img class="heart-photo" src="image_8a2578.jpg" alt="Foto 3">
-                <img class="heart-photo" src="IMG-20260108-WA0038.jpg" alt="Foto 4">
-                <div class="empty-cell"></div>
+            <!-- Wrapper agregado para optimizar el scroll horizontal en móviles -->
+            <div class="heart-grid-wrapper">
+                <div class="heart-grid">
+                    <!-- Fila 1 -->
+                    <div class="empty-cell"></div>
+                    <img class="heart-photo" src="IMG-20250720-WA0017.jpg" alt="Foto 1">
+                    <img class="heart-photo" src="image_8a251e.jpg" alt="Foto 2">
+                    <div class="empty-cell"></div>
+                    <img class="heart-photo" src="image_8a2578.jpg" alt="Foto 3">
+                    <img class="heart-photo" src="IMG-20260108-WA0038.jpg" alt="Foto 4">
+                    <div class="empty-cell"></div>
 
-                <!-- Fila 2 -->
-                <img class="heart-photo" src="IMG-20260529-WA0038.jpg" alt="Foto 5">
-                <img class="heart-photo" src="image_8a28bd.jpg" alt="Foto 6">
-                
-                <div class="heart-center-card">
-                    <h3>Para mi princesa</h3>
-                    <p>Feliz primer año, mi amor. Junte la mayor parte de mis fotos favoritas tuyas cielo de verdad que ha sido el mejor año de mi vida a tu lado se que hemos tenido nuestros momentos bajos algunos mas triste que otros pero siempre nos mantuvimos unidos por nuestro amor creeme que amarte y dejarte entrar en mi corazon ha sido la mejor decision de mi vida, el conocerte a veces pienso que ubiera pasado si nunca nos ubieramos hablado no me imagino una vida sin ti a mi lado. Gracias por amarme tal como soy, con mis errores y mis fallas, gracias por corregirme, por aconsejarme y sobre todo por estar a mi lado amandome y enseñandome a ser un mejor hombre. te amo mucho mas de lo que te imaginas mi amor gracias por este año juntos y quiero muchos mas a tu lado si me lo permites y llegar a ser tu esposo y tener unos lindos bebes y una familia junto a ti. Te amo Mi Mijin, Mi princesa. Mi todo 💜</p>
+                    <!-- Fila 2 -->
+                    <img class="heart-photo" src="IMG-20260529-WA0038.jpg" alt="Foto 5">
+                    <img class="heart-photo" src="image_8a28bd.jpg" alt="Foto 6">
+                    
+                    <div class="heart-center-card">
+                        <h3>Para mi princesa</h3>
+                        <p>Feliz primer año, mi amor. Junte la mayor parte de mis fotos favoritas tuyas cielo de verdad que ha sido el mejor año de mi vida a tu lado se que hemos tenido nuestros momentos bajos algunos mas triste que otros pero siempre nos mantuvimos unidos por nuestro amor creeme que amarte y dejarte entrar en mi corazon ha sido la mejor decision de mi vida, el conocerte a veces pienso que ubiera pasado si nunca nos ubieramos hablado no me imagino una vida sin ti a mi lado. Gracias por amarme tal como soy, con mis errores y mis fallas, gracias por corregirme, por aconsejarme y sobre todo por estar a mi lado amandome y enseñandome a ser un mejor hombre. te amo mucho mas de lo que te imaginas mi amor gracias por este año juntos y quiero muchos mas a tu lado si me lo permites y llegar a ser tu esposo y tener unos lindos bebes y una familia junto a ti. Te amo Mi Mijin, Mi princesa. Mi todo 💜</p>
+                    </div>
+                    
+                    <img class="heart-photo" src="image_8a28fa.jpg" alt="Foto 7">
+                    <img class="heart-photo" src="IMG-20250608-WA0003.jpg" alt="Foto 8">
+
+                    <!-- Fila 3 -->
+                    <img class="heart-photo" src="IMG-20250602-WA0073.jpg" alt="Foto 9">
+                    <img class="heart-photo" src="image_8a291a.jpg" alt="Foto 10">
+                    <img class="heart-photo" src="image_8a293b.jpg" alt="Foto 11">
+                    <img class="heart-photo" src="IMG-20250606-WA0017.jpg" alt="Foto 12">
+
+                    <!-- Fila 4 -->
+                    <div class="empty-cell"></div>
+                    <img class="heart-photo" src="IMG-20251214-WA0059.jpg" alt="Foto 13">
+                    <img class="heart-photo" src="image_8a2c00.jpg" alt="Foto 14">
+                    <img class="heart-photo" src="image_8a2c3e.jpg" alt="Foto 15">
+                    <img class="heart-photo" src="image_8a2c5d.jpg" alt="Foto 16">
+                    <img class="heart-photo" src="IMG-20260517-WA0010.jpg" alt="Foto 17">
+                    <div class="empty-cell"></div>
+
+                    <!-- Fila 5 -->
+                    <div class="empty-cell"></div>
+                    <div class="empty-cell"></div>
+                    <img class="heart-photo" src="IMG-20260523-WA0035.jpg" alt="Foto 18">
+                    <img class="heart-photo" src="WhatsApp Image 2026-05-02 at 2.33.27 PM.jpeg" alt="Foto 19">
+                    <img class="heart-photo" src="IMG-20260526-WA0005.jpg" alt="Foto 20">
+                    <div class="empty-cell"></div>
+                    <div class="empty-cell"></div>
+
+                    <!-- Fila 6 -->
+                    <div class="empty-cell"></div>
+                    <div class="empty-cell"></div>
+                    <div class="empty-cell"></div>
+                    <img class="heart-photo" src="IMG-20260523-WA0035.jpg" alt="Foto Punta">
+                    <div class="empty-cell"></div>
+                    <div class="empty-cell"></div>
+                    <div class="empty-cell"></div>
                 </div>
-                
-                <img class="heart-photo" src="image_8a28fa.jpg" alt="Foto 7">
-                <img class="heart-photo" src="IMG-20250608-WA0003.jpg" alt="Foto 8">
-
-                <!-- Fila 3 -->
-                <img class="heart-photo" src="IMG-20250602-WA0073.jpg" alt="Foto 9">
-                <img class="heart-photo" src="image_8a291a.jpg" alt="Foto 10">
-                <img class="heart-photo" src="image_8a293b.jpg" alt="Foto 11">
-                <img class="heart-photo" src="IMG-20250606-WA0017.jpg" alt="Foto 12">
-
-                <!-- Fila 4 -->
-                <div class="empty-cell"></div>
-                <img class="heart-photo" src="IMG-20251214-WA0059.jpg" alt="Foto 13">
-                <img class="heart-photo" src="image_8a2c00.jpg" alt="Foto 14">
-                <img class="heart-photo" src="image_8a2c3e.jpg" alt="Foto 15">
-                <img class="heart-photo" src="image_8a2c5d.jpg" alt="Foto 16">
-                <img class="heart-photo" src="IMG-20260517-WA0010.jpg" alt="Foto 17">
-                <div class="empty-cell"></div>
-
-                <!-- Fila 5 -->
-                <div class="empty-cell"></div>
-                <div class="empty-cell"></div>
-                <img class="heart-photo" src="IMG-20260523-WA0035.jpg" alt="Foto 18">
-                <img class="heart-photo" src="WhatsApp Image 2026-05-02 at 2.33.27 PM.jpeg" alt="Foto 19">
-                <img class="heart-photo" src="IMG-20260526-WA0005.jpg" alt="Foto 20">
-                <div class="empty-cell"></div>
-                <div class="empty-cell"></div>
-
-                <!-- Fila 6 -->
-                <div class="empty-cell"></div>
-                <div class="empty-cell"></div>
-                <div class="empty-cell"></div>
-                <img class="heart-photo" src="IMG-20260523-WA0035.jpg" alt="Foto Punta">
-                <div class="empty-cell"></div>
-                <div class="empty-cell"></div>
-                <div class="empty-cell"></div>
             </div>
         </div>
 
@@ -598,13 +620,13 @@
 
         <!-- SECCIÓN DE BOTONES DE ÁNIMO -->
         <div class="interactive-section">
-            <div class="interactive-title">Te hice estos botones con mensajes dentro segun como te sientas puedes verlos siempre que quieras o cuando te sientas estresada o mal :3:</div>
+            <div class="interactive-title">Te hice estos botones con mensajes dentro segun como te siemtas puedes verlos siempre que quieras o cuando te sientas estresada o mal :3:</div>
             <div class="btn-grid">
                 <button class="mood-btn" onclick="openModal('extraño')">Te extraño mucho 🥺</button>
                 <button class="mood-btn" onclick="openModal('triste')">Tuve un mal día 😞</button>
                 <button class="mood-btn" onclick="openModal('feliz')">¡Estoy feliz! 🥰</button>
                 <button class="mood-btn" onclick="openModal('futuro')">Nuestro futuro 🔮</button>
-                <button class="mood-btn" onclick="openModal('estresada')">Estoy Estresada 🫩</button>
+                <button class="mood-btn" onclick="openModal('mensajeNuevo')">Un mensajito extra 💖</button>
             </div>
         </div>
     </div>
@@ -652,7 +674,7 @@
             triste: "Lamento mucho si las cosas no salieron bien hoy. Respira profundo, mi amor. Eres una mujer increíblemente fuerte y capaz. No dejes que un mal día opaque lo maravillosa que eres. Yo siempre voy a estar aquí para escucharte y apoyarte en todo. Te amo. 😞⚡",
             feliz: "¡Verte feliz es lo que más me llena el alma! Tu sonrisa y tu alegría se transmiten incluso a través de la pantalla. Gracias por contagiarme tu hermosa energía. 🥰✨",
             futuro: "Hoy cumplimos un año, pero esto es solo el inicio. Me emociona muchísimo pensar en todo lo que nos espera: los viajes, los abrazos que no tendrán fin y cada meta que cumpliremos juntos. Gracias por elegirme para construir este futuro a tu lado. 🔮💜",
-            estresada: "Ay mi niña lamento que estes estresada recuerda que eres una superchica se que puedes con todo pero tomatelo con calma respira ondo e intenta descansar cuando puedas. cuando te sientas mejor habla con tu niño y cuentale todo recuerda que estoy para ti✨"
+            mensajeNuevo: "Nunca olvides que eres mi prioridad absoluta y que cada pequeño detalle que hago es para recordarte lo mucho que vales. Gracias por regalarme los mejores 365 días de mi vida. ¡Eres mi todo, hoy y siempre! 💖✨"
         };
 
         function openModal(type) {
@@ -667,27 +689,18 @@
         // NUEVO GENERADOR ENRIQUECIDO DE PARTÍCULAS (Estrellas, Corazones, Constelaciones que suben)
         function createHeart() {
             const container = document.getElementById('particles');
-            // Listado amplio de figuras solicitadas: estrellas nítidas, destellos, lunas y variantes de corazones
             const symbols = ['⭐', '✨', '💜', '🔮', '⚡', '🌌', '💖', '💞', '🌙', '💘'];
             const particle = document.createElement('div');
             particle.classList.add('heart-particle');
             
-            // Selección aleatoria de figura
             particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-            
-            // Posicionamiento horizontal aleatorio a lo ancho de la pantalla
             particle.style.left = Math.random() * 100 + 'vw';
-            // Punto de partida justo abajo de la pantalla
             particle.style.top = '100vh';
             
-            // Variación de tamaños dinámicos para dar profundidad óptica
             const size = (Math.random() * 22 + 12);
             particle.style.fontSize = size + 'px';
-            
-            // Velocidades variables para que suban de forma fluida y natural
             particle.style.animationDuration = (Math.random() * 4 + 3) + 's';
             
-            // Brillo de neón alternado (Cian o Morado) según la figura
             if(Math.random() > 0.5) {
                 particle.style.textShadow = "0 0 10px var(--neon-cyan), 0 0 20px rgba(0,243,255,0.2)";
             } else {
@@ -696,13 +709,11 @@
 
             container.appendChild(particle);
             
-            // Limpieza automática del DOM una vez terminen de subir por completo
             setTimeout(() => {
                 particle.remove();
             }, 6500);
         }
         
-        // Intervalo más rápido (180ms) para garantizar un fondo lleno de figuras hasta arriba
         setInterval(createHeart, 180);
     </script>
 </body>
