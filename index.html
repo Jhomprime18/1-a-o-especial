@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Primer Año Mi Amor ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght=700&family=Montserrat:wght=400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-purple: #bc13fe;
+            --neon-cyan: #00f3ff;
+            --dark-bg: #05000a;
+            --card-bg: rgba(10, 2, 18, 0.85);
+            --glass-border: rgba(188, 19, 254, 0.25);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at center, #1a002c 0%, var(--dark-bg) 100%);
+            color: #f0f0f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 1000px;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple);
+            margin-bottom: 5px;
+            animation: pulseNeon 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseNeon {
+            0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple); transform: scale(1); }
+            50% { text-shadow: 0 0 15px #fff, 0 0 30px var(--neon-cyan), 0 0 50px var(--neon-cyan); transform: scale(1.02); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* CONTADOR ESTILO NEÓN */
+        .countdown-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.15), inset 0 0 15px rgba(188, 19, 254, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .countdown-title {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #e0b0ff;
+            margin-bottom: 15px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 12px;
+            min-width: 80px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+        }
+
+        .time-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 8px var(--neon-cyan);
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        /* BOTÓN DE MÚSICA NEÓN */
+        #music-btn {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--neon-purple);
+            padding: 18px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 0 15px var(--neon-purple), inset 0 0 10px var(--neon-purple);
+            text-shadow: 0 0 5px #fff;
+            margin-bottom: 40px;
+            transition: 0.3s;
+        }
+
+        #music-btn:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 25px var(--neon-cyan), inset 0 0 15px var(--neon-cyan);
+            transform: translateY(-3px);
+        }
+
+        /* CONTENEDOR DE FOTOS */
+        .heart-grid-container {
+            margin: 50px auto;
+            max-width: 750px;
+            padding: 10px;
+        }
+
+        .interactive-title {
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-purple);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .heart-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 10px;
+            aspect-ratio: 1.15;
+        }
+
+        /* CELDAS DE FOTOS */
+        .heart-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(188, 19, 254, 0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s;
+        }
+
+        .heart-photo:hover {
+            transform: scale(1.2);
+            border-color: var(--neon-cyan);
+            z-index: 5;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* CENTRO DEL CORAZÓN (LA CARTA) */
+        .heart-center-card {
+            grid-column: 3 / 6;
+            grid-row: 2 / 5;
+            background: rgba(5, 1, 10, 0.95);
+            border: 2px solid var(--neon-purple);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.5);
+            overflow-y: auto;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .heart-center-card h3 {
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            text-shadow: 0 0 8px var(--neon-purple);
+            font-size: 2rem;
+            margin: 0 0 8px 0;
+        }
+
+        .heart-center-card p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #ebd6ff;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* ==========================================
+           CRONOLOGÍA (TIMELINE) NEÓN MODERNO
+           ========================================== */
+        .timeline-section {
+            margin: 60px auto 30px auto;
+            max-width: 850px;
+            position: relative;
+            padding: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--neon-purple), var(--neon-cyan), var(--neon-purple));
+            transform: translateX(-50%);
+            box-shadow: 0 0 8px var(--neon-purple);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            margin-bottom: 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: rgba(12, 4, 22, 0.8);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Foto Completa y Grande */
+        .timeline-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(188, 19, 254, 0.2);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .timeline-content h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 5px var(--neon-purple);
+            margin: 5px 0 10px 0;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: #d1bfff;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 25px; left: 50%;
+            width: 14px; height: 14px;
+            background: var(--dark-bg);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        .timeline-item:hover .timeline-icon {
+            background: var(--neon-purple);
+            border-color: #fff;
+            box-shadow: 0 0 12px var(--neon-purple);
+        }
+
+        /* SECCIÓN DE BOTONES DE ÁNIMO */
+        .interactive-section {
+            margin: 40px 0 30px 0;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .mood-btn {
+            background: rgba(20, 5, 35, 0.6);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .mood-btn:hover {
+            background: rgba(188, 19, 254, 0.15);
+            border-color: var(--neon-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        /* VENTANA MODAL NEÓN */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(7px);
+        }
+
+        .modal-content {
+            background: #0d021a;
+            border: 2px solid var(--neon-cyan);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 25px var(--neon-cyan);
+            position: relative;
+            animation: modalOpen 0.4s ease;
+        }
+
+        @keyframes modalOpen {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e4d5ff;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 0 8px var(--neon-purple);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 12px var(--neon-cyan);
+        }
+
+        .empty-cell {
+            visibility: hidden;
+        }
+
+        /* CONFIGURACIÓN ANIMACIÓN PARTÍCULAS */
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: flyUp 6s linear infinite;
+            opacity: 0;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @keyframes flyUp {
+            0% { transform: translateY(105vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.75; }
+            90% { opacity: 0.75; }
+            100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 45px !important; padding-right: 0 !important; text-align: left !important; }
+            .timeline-icon { left: 20px; }
+            .timeline-img { max-height: 300px; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3.2rem; }
+            .heart-center-card h3 { font-size: 1.4rem; }
+            .heart-center-card p { font-size: 0.75rem; line-height: 1.2; }
+            .time-number { font-size: 1.8rem; }
+            .time-box { min-width: 60px; padding: 10px; }
+            .heart-grid { gap: 4px; }
+            .timeline-img { max-height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capa del fondo de partículas infinitas -->
+    <div id="particles"></div>
+
+    <audio id="love-song" loop>
+        <source src="Manana Voy A Conquistarla.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>¡Feliz primer aniversario de relación amor!</h1>
+        <div class="subtitle">12 meses juntos y vamos por muchos más</div>
+
+        <div class="countdown-container">
+            <div class="countdown-title">Tiempo entregándote mi corazón:</div>
+            <div class="countdown" id="clock">
+                <div class="time-box"><span class="time-number" id="days">00</span><span class="time-label">Días</span></div>
+                <div class="time-box"><span class="time-number" id="hours">00</span><span class="time-label">Horas</span></div>
+                <div class="time-box"><span class="time-number" id="minutes">00</span><span class="time-label">Min</span></div>
+                <div class="time-box"><span class="time-number" id="seconds">00</span><span class="time-label">Seg</span></div>
+            </div>
+        </div>
+        
+        <button id="music-btn" onclick="playMusic()">⚡ Te dedico esta canción bebé hermosa</button>
+
+        <!-- SECCIÓN DEL CORAZÓN DE FOTOS -->
+        <div class="heart-grid-container">
+            <div class="interactive-title">Mis fotos favoritas de ti 🔮 ✨</div>
+            
+            <div class="heart-grid">
+                <!-- Fila 1 -->
+                <div class="empty-cell"></div>
+                <img class="heart-photo" src="IMG-20250720-WA0017.jpg" alt="Foto 1">
+                <img class="heart-photo" src="image_8a251e.jpg" alt="Foto 2">
+                <div class="empty-cell"></div>
+                <img class="heart-photo" src="image_8a2578.jpg" alt="Foto 3">
+                <img class="heart-photo" src="IMG-20260108-WA0038.jpg" alt="Foto 4">
+                <div class="empty-cell"></div>
+
+                <!-- Fila 2 -->
+                <img class="heart-photo" src="IMG-20260529-WA0038.jpg" alt="Foto 5">
+                <img class="heart-photo" src="image_8a28bd.jpg" alt="Foto 6">
+                
+                <div class="heart-center-card">
+                    <h3>Para mi princesa</h3>
+                    <p>Feliz primer año, mi amor. Junte la mayor parte de mis fotos favoritas tuyas cielo de verdad que ha sido el mejor año de mi vida a tu lado se que hemos tenido nuestros momentos bajos algunos mas triste que otros pero siempre nos mantuvimos unidos por nuestro amor creeme que amarte y dejarte entrar en mi corazon ha sido la mejor decision de mi vida, el conocerte a veces pienso que ubiera pasado si nunca nos ubieramos hablado no me imagino una vida sin ti a mi lado. Gracias por amarme tal como soy, con mis errores y mis fallas, gracias por corregirme, por aconsejarme y sobre todo por estar a mi lado amandome y enseñandome a ser un mejor hombre. te amo mucho mas de lo que te imaginas mi amor gracias por este año juntos y quiero muchos mas a tu lado si me lo permites y llegar a ser tu esposo y tener unos lindos bebes y una familia junto a ti. Te amo Mi Mijin, Mi princesa. Mi todo 💜</p>
+                </div>
+                
+                <img class="heart-photo" src="image_8a28fa.jpg" alt="Foto 7">
+                <img class="heart-photo" src="IMG-20250608-WA0003.jpg" alt="Foto 8">
+
+                <!-- Fila 3 -->
+                <img class="heart-photo" src="IMG-20250602-WA0073.jpg" alt="Foto 9">
+                <img class="heart-photo" src="image_8a291a.jpg" alt="Foto 10">
+                <img class="heart-photo" src="image_8a293b.jpg" alt="Foto 11">
+                <img class="heart-photo" src="IMG-20250606-WA0017.jpg" alt="Foto 12">
+
+                <!-- Fila 4 -->
+                <div class="empty-cell"></div>
+                <img class="heart-photo" src="IMG-20251214-WA0059.jpg" alt="Foto 13">
+                <img class="heart-photo" src="image_8a2c00.jpg" alt="Foto 14">
+                <img class="heart-photo" src="image_8a2c3e.jpg" alt="Foto 15">
+                <img class="heart-photo" src="image_8a2c5d.jpg" alt="Foto 16">
+                <img class="heart-photo" src="IMG-20260517-WA0010.jpg" alt="Foto 17">
+                <div class="empty-cell"></div>
+
+                <!-- Fila 5 -->
+                <div class="empty-cell"></div>
+                <div class="empty-cell"></div>
+                <img class="heart-photo" src="IMG-20260523-WA0035.jpg" alt="Foto 18">
+                <img class="heart-photo" src="WhatsApp Image 2026-05-02 at 2.33.27 PM.jpeg" alt="Foto 19">
+                <img class="heart-photo" src="IMG-20260526-WA0005.jpg" alt="Foto 20">
+                <div class="empty-cell"></div>
+                <div class="empty-cell"></div>
+
+                <!-- Fila 6 -->
+                <div class="empty-cell"></div>
+                <div class="empty-cell"></div>
+                <div class="empty-cell"></div>
+                <img class="heart-photo" src="IMG-20260523-WA0035.jpg" alt="Foto Punta">
+                <div class="empty-cell"></div>
+                <div class="empty-cell"></div>
+                <div class="empty-cell"></div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+            SECCIÓN CRONOLOGÍA
+            ========================================== -->
+        <div class="timeline-section">
+            <div class="interactive-title">Nuestra Historia 📖 ⚡</div>
+            <ul class="timeline">
+                
+                <!-- Hito 1 -->
+                <li class="timeline-item">
+                    <div class="timeline-icon"></div>
+                    <div class="timeline-content">
+                        <img class="timeline-img" src="Nuestra primera conversacion.jpeg" alt="Nuestra primera charla">
+                        <span class="timeline-date">El Inicio</span>
+                        <h4>Nuestra primera charla</h4>
+                        <p>Ese primer mensaje sin saber que se convertiría en lo más importante de mi vida y claro te mandé patas JAJAJA. Las horas se pasaban volando hablando contigo.</p>
+                    </div>
+                </li>
+
+                <!-- Hito 2 -->
+                <li class="timeline-item">
+                    <div class="timeline-icon"></div>
+                    <div class="timeline-content">
+                        <img class="timeline-img" src="Cuando nos hicimos novios.jpeg" alt="Cuando nos hicimos novios">
+                        <span class="timeline-date">3 de Junio de 2025</span>
+                        <h4>Cuando nos hicimos novios</h4>
+                        <p>El día exacto en que decidimos empezar este hermoso viaje juntos mi corazón se abrió para ti. Habías sufrido tiempo atrás con otros hombres pero yo me aseguraría que no sufrieras más ni ahora ni nunca.</p>
+                    </div>
+                </li>
+
+                <!-- Hito 3 -->
+                <li class="timeline-item">
+                    <div class="timeline-icon"></div>
+                    <div class="timeline-content">
+                        <img class="timeline-img" src="nuestras multiples llamadas.jpeg" alt="Nuestras llamadas">
+                        <span class="timeline-date">A lo largo del año</span>
+                        <h4>Nuestras noches de llamadas</h4>
+                        <p>A pesar de cualquier distancia jugamos e hicimos cosas, ahora no mucho ya que te frustra pero guardo en mi corazón y memoria esas noches de risas y juegos, ya sea en UNO o en Mine haciendo nuestra casa juntos :D.</p>
+                    </div>
+                </li>
+
+                <!-- Hito 4 -->
+                <li class="timeline-item">
+                    <div class="timeline-icon"></div>
+                    <div class="timeline-content">
+                        <img class="timeline-img" src="Nuestro primer mesaniversario.jpeg" alt="Un año juntos">
+                        <span class="timeline-date">Hoy</span>
+                        <h4>Un año entero amándote</h4>
+                        <p>Nuestro primer mesaniversario se ve lejano en comparación al primer año que tenemos juntos, pero fue la primera vez que te di cariño y una carta. Cada mes que pasaba fui mejorando en cuanto a regalos, detalles y más importante en actitud. ¡Y seguiré haciéndolo porque te amo!</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- SECCIÓN DE BOTONES DE ÁNIMO -->
+        <div class="interactive-section">
+            <div class="interactive-title">Te hice estos botones con mensajes dentro segun como te sientas puedes verlos siempre que quieras o cuando te sientas estresada o mal :3:</div>
+            <div class="btn-grid">
+                <button class="mood-btn" onclick="openModal('extraño')">Te extraño mucho 🥺</button>
+                <button class="mood-btn" onclick="openModal('triste')">Tuve un mal día 😞</button>
+                <button class="mood-btn" onclick="openModal('feliz')">¡Estoy feliz! 🥰</button>
+                <button class="mood-btn" onclick="openModal('futuro')">Nuestro futuro 🔮</button>
+                <button class="mood-btn" onclick="openModal('estresada')">Estoy Estresada 🫩</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="loveModal">
+        <div class="modal-content">
+            <p class="modal-text" id="modalText">Mensaje secreto...</p>
+            <button class="close-btn" onclick="closeModal()">Cerrar 💜</button>
+        </div>
+    </div>
+
+    <script>
+        // CONTROL DE AUDIO
+        function playMusic() {
+            const audio = document.getElementById('love-song');
+            audio.play().catch(e => console.log("Audio play error"));
+            document.getElementById('music-btn').innerHTML = "🎶 Sonando para ti mi reina...";
+            document.getElementById('music-btn').style.borderColor = "var(--neon-cyan)";
+            document.getElementById('music-btn').style.boxShadow = "0 0 25px var(--neon-cyan)";
+        }
+
+        // LÓGICA DEL CONTADOR (3 de Junio de 2025)
+        const anniversaryDate = new Date(2025, 5, 3, 0, 0, 9); 
+
+        function updateClock() {
+            const now = new Date();
+            const diff = now - anniversaryDate;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+            document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+            document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // CARTAS SECRETAS
+        const messages = {
+            extraño: "Sé que la distancia es difícil, mi niña hermosa, pero cada día falta menos para recortarla. Si me extrañas hoy, recuerda que estás en cada uno de mis pensamientos y que mi corazón te pertenece por completo. ¡Te mando un abrazo enorme! 🥺💜",
+            triste: "Lamento mucho si las cosas no salieron bien hoy. Respira profundo, mi amor. Eres una mujer increíblemente fuerte y capaz. No dejes que un mal día opaque lo maravillosa que eres. Yo siempre voy a estar aquí para escucharte y apoyarte en todo. Te amo. 😞⚡",
+            feliz: "¡Verte feliz es lo que más me llena el alma! Tu sonrisa y tu alegría se transmiten incluso a través de la pantalla. Gracias por contagiarme tu hermosa energía. 🥰✨",
+            futuro: "Hoy cumplimos un año, pero esto es solo el inicio. Me emociona muchísimo pensar en todo lo que nos espera: los viajes, los abrazos que no tendrán fin y cada meta que cumpliremos juntos. Gracias por elegirme para construir este futuro a tu lado. 🔮💜",
+            estresada: "Ay mi niña lamento que estes estresada recuerda que eres una superchica se que puedes con todo pero tomatelo con calma respira ondo e intenta descansar cuando puedas. cuando te sientas mejor habla con tu niño y cuentale todo recuerda que estoy para ti✨"
+        };
+
+        function openModal(type) {
+            document.getElementById('modalText').innerText = messages[type];
+            document.getElementById('loveModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('loveModal').style.display = 'none';
+        }
+
+        // NUEVO GENERADOR ENRIQUECIDO DE PARTÍCULAS (Estrellas, Corazones, Constelaciones que suben)
+        function createHeart() {
+            const container = document.getElementById('particles');
+            // Listado amplio de figuras solicitadas: estrellas nítidas, destellos, lunas y variantes de corazones
+            const symbols = ['⭐', '✨', '💜', '🔮', '⚡', '🌌', '💖', '💞', '🌙', '💘'];
+            const particle = document.createElement('div');
+            particle.classList.add('heart-particle');
+            
+            // Selección aleatoria de figura
+            particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            // Posicionamiento horizontal aleatorio a lo ancho de la pantalla
+            particle.style.left = Math.random() * 100 + 'vw';
+            // Punto de partida justo abajo de la pantalla
+            particle.style.top = '100vh';
+            
+            // Variación de tamaños dinámicos para dar profundidad óptica
+            const size = (Math.random() * 22 + 12);
+            particle.style.fontSize = size + 'px';
+            
+            // Velocidades variables para que suban de forma fluida y natural
+            particle.style.animationDuration = (Math.random() * 4 + 3) + 's';
+            
+            // Brillo de neón alternado (Cian o Morado) según la figura
+            if(Math.random() > 0.5) {
+                particle.style.textShadow = "0 0 10px var(--neon-cyan), 0 0 20px rgba(0,243,255,0.2)";
+            } else {
+                particle.style.textShadow = "0 0 10px var(--neon-purple), 0 0 20px rgba(188,19,254,0.2)";
+            }
+
+            container.appendChild(particle);
+            
+            // Limpieza automática del DOM una vez terminen de subir por completo
+            setTimeout(() => {
+                particle.remove();
+            }, 6500);
+        }
+        
+        // Intervalo más rápido (180ms) para garantizar un fondo lleno de figuras hasta arriba
+        setInterval(createHeart, 180);
+    </script>
+</body>
+</html>
